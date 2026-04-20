@@ -1,4 +1,5 @@
 import type { Activity } from "../../types";
+import Icon from "../Utils/Icon";
 import "./SchedulePanel.css";
 
 export default function SchedulePanel({
@@ -42,9 +43,8 @@ export default function SchedulePanel({
               gridRowEnd: calculatePosition(activity.endTime),
             }}
           >
+            <Icon icon={activity.icon} color="--blue-light" />
             <p>{activity.title}</p>
-            <p>{activity.startTime}</p>
-            <p>{activity.endTime}</p>
           </div>
         );
       })}

@@ -1,24 +1,37 @@
 .schedule-panel {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: 20% 80%;
   grid-template-rows: repeat(38, 1fr);
+  height: 100vh;
+  font-family: var(--console-title-font);
+  font-size: 14px;
+  background-color: var(--blue-darker-70);
+  color: var(--blue-light);
+  box-shadow: 0px 0px 5px 3px var(--blue-light);
+  grid-area: 1 / 1;
+  z-index: 1;
 
   .hour-cell {
     grid-row: span 2;
-    background-color: var(--blue-light);
     grid-column: 1;
+    border-right: solid;
   }
 
   .activity-cell {
     grid-column: 2;
-    background-color: red;
+    display: grid;
+    grid-template-columns: 10% 90%;
+    p {
+      padding: 10px;
+      text-transform: uppercase;
+    }
   }
 
   div {
     align-items: center;
     justify-content: center;
     align-content: center;
-    border-top: dotted;
-    border-bottom: dotted;
+    border-top: dotted 1px;
+    border-bottom: dotted 1px;
   }
 }

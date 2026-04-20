@@ -1,0 +1,33 @@
+.activity-panel {
+  height: 100vh;
+  font-family: var(--console-title-font);
+  font-size: 14px;
+  background-color: var(--blue-darker-70);
+  color: var(--blue-light);
+  box-shadow: 0px 0px 5px 3px var(--blue-light);
+  grid-area: 1 / 1;
+  z-index: 1;
+
+  .activity-header {
+    /* TODO */
+    text-transform: uppercase;
+    display: grid;
+    grid-template-columns: 90% 10%;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: solid;
+
+    .title-detail {
+      text-align: center;
+      align-items: center;
+      display: flex;
+      justify-content: center;
+      align-content: center;
+      overflow: hidden;
+    }
+
+    .close-button {
+      padding: 10px;
+    }
+  }
+}

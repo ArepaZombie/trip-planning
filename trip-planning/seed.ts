@@ -14,7 +14,7 @@ const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 
 const data = {
-  id: "honeymoon",
+  id: "trip-chachapoyas-honeymoon",
   title: "Luna de Miel - Chachapoyas",
   days: [
     {
@@ -62,7 +62,26 @@ const data = {
             "https://maps.google.com/?q=Aeropuerto+Internacional+Jorge+Chavez+Callao+Peru",
           icon: "fa-plane",
           photos: [],
-          tasks: [],
+          tasks: [
+            {
+              id: "task-1-1-1",
+              text: "Imprimir o descargar boarding pass",
+              optional: false,
+              done: false,
+            },
+            {
+              id: "task-1-1-2",
+              text: "Llegar al aeropuerto 2 horas antes",
+              optional: false,
+              done: false,
+            },
+            {
+              id: "task-1-1-3",
+              text: "Llevar snacks para el vuelo",
+              optional: true,
+              done: false,
+            },
+          ],
         },
         {
           id: "act-1-2",
@@ -74,7 +93,14 @@ const data = {
           destiny: "https://maps.google.com/?q=Chachapoyas+Amazonas+Peru",
           icon: "fa-car",
           photos: [],
-          tasks: [],
+          tasks: [
+            {
+              id: "task-1-2-1",
+              text: "Coordinar transporte desde aeropuerto de Jaén",
+              optional: false,
+              done: false,
+            },
+          ],
         },
         {
           id: "act-1-3",
@@ -86,7 +112,14 @@ const data = {
           destiny: "",
           icon: "fa-utensils",
           photos: [],
-          tasks: [],
+          tasks: [
+            {
+              id: "task-1-3-1",
+              text: "Confirmar reserva del hotel",
+              optional: false,
+              done: false,
+            },
+          ],
         },
         {
           id: "act-1-4",
@@ -172,8 +205,14 @@ const data = {
           tasks: [
             {
               id: "task-2-2-1",
-              text: "Comprar entradas al teleférico",
+              text: "Comprar entradas al teleférico con anticipación",
               optional: false,
+              done: false,
+            },
+            {
+              id: "task-2-2-2",
+              text: "Llevar cámara o cargar celular",
+              optional: true,
               done: false,
             },
           ],
@@ -210,7 +249,14 @@ const data = {
             "https://maps.google.com/?q=Restaurant+Porai+Chachapoyas+Peru",
           icon: "fa-utensils",
           photos: [],
-          tasks: [],
+          tasks: [
+            {
+              id: "task-2-5-1",
+              text: "Hacer reserva en Poraí",
+              optional: false,
+              done: false,
+            },
+          ],
         },
       ],
     },
@@ -268,7 +314,7 @@ const data = {
           endTime: "13:00",
           destiny:
             "https://maps.google.com/?q=Mercado+Central+Chachapoyas+Peru",
-          icon: "fa-shoe-prints",
+          icon: "fa-compass",
           photos: [],
           tasks: [],
         },
@@ -291,9 +337,16 @@ const data = {
           startTime: "16:00",
           endTime: "18:00",
           destiny: "",
-          icon: "fa-shoe-prints",
+          icon: "fa-compass",
           photos: [],
-          tasks: [],
+          tasks: [
+            {
+              id: "task-3-4-1",
+              text: "Comprar souvenirs para la familia",
+              optional: true,
+              done: false,
+            },
+          ],
         },
         {
           id: "act-3-5",
@@ -365,7 +418,20 @@ const data = {
           destiny: "https://maps.google.com/?q=Cocachimba+Amazonas+Peru",
           icon: "fa-car",
           photos: [],
-          tasks: [],
+          tasks: [
+            {
+              id: "task-4-1-1",
+              text: "Coordinar transporte la noche anterior",
+              optional: false,
+              done: false,
+            },
+            {
+              id: "task-4-1-2",
+              text: "Preparar mochila con lo esencial para la caminata",
+              optional: false,
+              done: false,
+            },
+          ],
         },
         {
           id: "act-4-2",
@@ -374,9 +440,22 @@ const data = {
           startTime: "10:00",
           endTime: "13:00",
           destiny: "https://maps.google.com/?q=Catarata+Gocta+Amazonas+Peru",
-          icon: "fa-shoe-prints",
+          icon: "fa-compass",
           photos: [],
-          tasks: [],
+          tasks: [
+            {
+              id: "task-4-2-1",
+              text: "Llevar cambio de ropa seca",
+              optional: false,
+              done: false,
+            },
+            {
+              id: "task-4-2-2",
+              text: "Llevar suficiente agua para la caminata",
+              optional: false,
+              done: false,
+            },
+          ],
         },
         {
           id: "act-4-3",
@@ -399,7 +478,20 @@ const data = {
           destiny: "",
           icon: "fa-star",
           photos: [],
-          tasks: [],
+          tasks: [
+            {
+              id: "task-4-4-1",
+              text: "Confirmar reserva del lodge",
+              optional: false,
+              done: false,
+            },
+            {
+              id: "task-4-4-2",
+              text: "Preparar sorpresa romántica 💕",
+              optional: true,
+              done: false,
+            },
+          ],
         },
         {
           id: "act-4-5",
@@ -490,7 +582,14 @@ const data = {
           destiny: "https://maps.google.com/?q=Mirador+Chachapoyas+Peru",
           icon: "fa-star",
           photos: [],
-          tasks: [],
+          tasks: [
+            {
+              id: "task-5-4-1",
+              text: "Llegar antes del atardecer para la mejor foto",
+              optional: true,
+              done: false,
+            },
+          ],
         },
         {
           id: "act-5-5",
@@ -567,7 +666,14 @@ const data = {
             "https://maps.google.com/?q=Sarcofagos+de+Karajia+Amazonas+Peru",
           icon: "fa-star",
           photos: [],
-          tasks: [],
+          tasks: [
+            {
+              id: "task-6-2-1",
+              text: "Contratar guía local para Karajía",
+              optional: true,
+              done: false,
+            },
+          ],
         },
         {
           id: "act-6-3",
@@ -587,9 +693,16 @@ const data = {
           startTime: "16:00",
           endTime: "17:30",
           destiny: "",
-          icon: "fa-shoe-prints",
+          icon: "fa-compass",
           photos: [],
-          tasks: [],
+          tasks: [
+            {
+              id: "task-6-4-1",
+              text: "Cargar la linterna antes de salir",
+              optional: false,
+              done: false,
+            },
+          ],
         },
         {
           id: "act-6-5",
@@ -618,7 +731,7 @@ const data = {
     {
       id: "day-7",
       n: 7,
-      title: "Viaje a Jaén",
+      title: "Viaje de regreso",
       date: "2026-07-17",
       budget: { expected: 150, spent: 0 },
       packingItems: [
@@ -658,7 +771,20 @@ const data = {
           destiny: "",
           icon: "fa-utensils",
           photos: [],
-          tasks: [],
+          tasks: [
+            {
+              id: "task-7-1-1",
+              text: "Hacer checkout del hotel",
+              optional: false,
+              done: false,
+            },
+            {
+              id: "task-7-1-2",
+              text: "Revisar que no quede nada olvidado en la habitación",
+              optional: false,
+              done: false,
+            },
+          ],
         },
         {
           id: "act-7-2",
@@ -697,7 +823,7 @@ const data = {
           startTime: "15:00",
           endTime: "18:00",
           destiny: "https://maps.google.com/?q=Jaen+Cajamarca+Peru",
-          icon: "fa-shoe-prints",
+          icon: "fa-compass",
           photos: [],
           tasks: [],
         },
@@ -721,7 +847,20 @@ const data = {
           destiny: "https://maps.google.com/?q=Aeropuerto+FAP+Jaen+Peru",
           icon: "fa-plane",
           photos: [],
-          tasks: [],
+          tasks: [
+            {
+              id: "task-7-6-1",
+              text: "Hacer check-in online del vuelo",
+              optional: false,
+              done: false,
+            },
+            {
+              id: "task-7-6-2",
+              text: "Llegar al aeropuerto con 1.5 horas de anticipación",
+              optional: false,
+              done: false,
+            },
+          ],
         },
       ],
     },

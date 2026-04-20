@@ -64,7 +64,6 @@ export const getDayInfo = async (id: string, tripId: string = HONEYMOON_ID) => {
     linkArray = linkArray.concat([id, ACTIVITIES_COLLECTION]);
     const actSnap = await getDocs(collection(db, linkArray.join("/")));
 
-    console.log(linkArray.join("/"));
     //Retorno Objectificado
     return {
       id: daySnap.id,

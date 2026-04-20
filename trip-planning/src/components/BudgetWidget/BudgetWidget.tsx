@@ -10,6 +10,7 @@ export default function BudgetWidget({ budget }: { budget: Budget }) {
 
   return (
     <div className="budget-widget">
+      <h2>RECURSOS DISPONIBLES</h2>
       <p>{budgetLeft}</p>
       <p>{percetnLeft}</p>
       <EnergyBar energyLevel={energyLevel} />

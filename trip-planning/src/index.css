@@ -2,9 +2,11 @@
 
 :root {
   --stone-dark: #3a3432;
+  --stone-light: #eadcc5;
   --blue-light: #55fdfb;
   --blue-dark: #184f6f;
   --blue-darker: #010c1f;
+  --blue-darker-70: rgba(1, 12, 31, 0.7);
   --console-text-font: "Oxanium", sans-serif;
   --console-title-font: "Science Gothic", sans-serif;
   --stone-text-font: "Caesar Dressing", system-ui;
@@ -24,48 +26,26 @@
 
 body {
   margin: 0;
+  background-color: var(--stone-light);
 }
 
 h1,
 h2 {
-  font-family: var(--heading);
+  font-family: var(--stone-text-font);
   font-weight: 500;
-  color: var(--text-h);
+  color: var(--stone-dark);
 }
 
 h1 {
   font-size: 56px;
-  letter-spacing: -1.68px;
-  margin: 32px 0;
   @media (max-width: 1024px) {
-    font-size: 36px;
-    margin: 20px 0;
+    font-size: 30px;
   }
 }
 h2 {
   font-size: 24px;
   line-height: 118%;
-  letter-spacing: -0.24px;
-  margin: 0 0 8px;
   @media (max-width: 1024px) {
     font-size: 20px;
   }
-}
-p {
-  margin: 0;
-}
-
-code,
-.counter {
-  font-family: var(--mono);
-  display: inline-flex;
-  border-radius: 4px;
-  color: var(--text-h);
-}
-
-code {
-  font-size: 15px;
-  line-height: 135%;
-  padding: 4px 8px;
-  background: var(--code-bg);
 }

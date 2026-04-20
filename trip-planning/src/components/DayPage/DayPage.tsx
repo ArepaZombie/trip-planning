@@ -10,8 +10,30 @@ import ActivityDetail from "../ActivityDetail/ActivityDetail";
 
 export default function DayPage() {
   const [day, setDay] = useState<Day>();
+  const [time, setTime] = useState<number>();
   const [selectedActivityId, setSelectedActivityId] = useState<string>("");
   const { dayId } = useParams();
+
+  const calculateTime = () => {
+    const now = new Date();
+    const inicio = new Date(now);
+
+    //Valores desde las 6:00am
+    inicio.setHours(6, 0, 0, 0);
+    const msTotales = 19 * 60 * 60 * 1000;
+
+    const msPasados = now.getTime() - inicio.getTime();
+
+    return Math.round((msPasados / msTotales) * 100);
+  };
+
+  useEffect(() => {
+    const intervalo = setInterval(() => {
+      setTime(calculateTime());
+    }, 1000);
+
+    return () => clearInterval(intervalo);
+  });
 
   useEffect(() => {
     const getData = async () => {
@@ -20,28 +42,32 @@ export default function DayPage() {
         setDay(result);
       }
     };
-
     getData();
   }, []);
 
   return (
     <>
       {day && (
-        <div>
-          <h3>Día {day.n}</h3>
-          <h1>{day.title}</h1>
-          {selectedActivityId === "" ? (
-            <SchedulePanel
-              activities={day.activities}
-              setSelectedActivityId={setSelectedActivityId}
-            />
-          ) : (
-            <ActivityDetail
-              activityId={selectedActivityId}
-              dayId={day.id}
-              setSelectedActivityId={setSelectedActivityId}
-            />
-          )}
+        <div className="day-page">
+          <div className="day-page-header">
+            <h2>Día {day.n}</h2>
+            <h1>{day.title}</h1>
+          </div>
+          <div className="screen-container">
+            <div className="timer-panel" style={{ height: `${time}vh` }}></div>
+            {selectedActivityId === "" ? (
+              <SchedulePanel
+                activities={day.activities}
+                setSelectedActivityId={setSelectedActivityId}
+              />
+            ) : (
+              <ActivityDetail
+                activityId={selectedActivityId}
+                dayId={day.id}
+                setSelectedActivityId={setSelectedActivityId}
+              />
+            )}
+          </div>
           <InventoryPanel items={day.packingItems} />
           <BudgetWidget budget={day.budget} />
         </div>
