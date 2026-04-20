@@ -1,0 +1,24 @@
+.schedule-panel {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(38, 1fr);
+
+  .hour-cell {
+    grid-row: span 2;
+    background-color: var(--blue-light);
+    grid-column: 1;
+  }
+
+  .activity-cell {
+    grid-column: 2;
+    background-color: red;
+  }
+
+  div {
+    align-items: center;
+    justify-content: center;
+    align-content: center;
+    border-top: dotted;
+    border-bottom: dotted;
+  }
+}

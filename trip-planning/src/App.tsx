@@ -1,14 +1,15 @@
-import "./App.css";
-import TripPage from "./TripPage/TripPage";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import DayPage from "./components/DayPage/DayPage";
+import TripPage from "./components/TripPage/TripPage";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <TripPage />
-      </header>
-    </div>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<TripPage />} />
+        <Route path="/day/:dayId" element={<DayPage />} />
+      </Routes>
+    </BrowserRouter>
   );
 }
-
 export default App;

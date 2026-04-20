@@ -1,20 +1,20 @@
 import { useEffect, useState } from "react";
-import { getTrips } from "../firebase_firestore";
+import { getTrips } from "../../firebase_firestore";
 
 export default function LandingPage() {
-  const [trips, setTrips] = useState();
+  const [trips, setTrips] = useState<any>();
 
   useEffect(() => {
     const getData = async () => {
-      let results = await getTrips();
-      console.log(results);
-      setTrips(results);
+      try {
+        let results = await getTrips();
+
+        setTrips(results);
+      } catch (error) {}
     };
 
     getData();
   }, []);
-
-  console.log(trips);
 
   return (
     <>

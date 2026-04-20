@@ -1,0 +1,20 @@
+.energy-bar {
+  height: 30px;
+  width: 100%;
+  background-color: var(--blue-dark);
+  display: flex;
+
+  .full-cell {
+    background-color: var(--blue-light);
+  }
+
+  .empty-cell {
+    background-color: var(--blue-darker);
+  }
+
+  div {
+    height: 25px;
+    width: 5%;
+    border: solid;
+  }
+}
