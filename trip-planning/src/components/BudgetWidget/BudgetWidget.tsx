@@ -2,7 +2,7 @@ import type { Budget } from "../../types";
 import "./BudgetWidget.css";
 
 export default function BudgetWidget({ budget }: { budget: Budget }) {
-  const budgetLeft = budget.expected - 210; //budget.spent;
+  const budgetLeft = budget.expected - 50; //budget.spent;
   const percentLeft = Math.round((budgetLeft / budget.expected) * 100);
 
   return (

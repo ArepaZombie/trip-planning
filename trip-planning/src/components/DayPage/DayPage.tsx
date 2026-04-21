@@ -7,6 +7,7 @@ import "./DayPage.css";
 import InventoryPanel from "../InventoryPanel/InventoryPanel";
 import BudgetWidget from "../BudgetWidget/BudgetWidget";
 import ActivityDetail from "../ActivityDetail/ActivityDetail";
+import NavBar from "../NavBar/NavBar";
 
 export default function DayPage() {
   const [day, setDay] = useState<Day>();
@@ -60,7 +61,7 @@ export default function DayPage() {
                 background: `linear-gradient(
         var(--blue-dark) 0%,
         var(--blue-dark) ${time}%,
-        var(--blue-dark-70) ${time + 1}%
+        var(--blue-dark-70) ${time && time + 1}%
       )`,
               }}
             ></div>
@@ -81,6 +82,11 @@ export default function DayPage() {
           <BudgetWidget budget={day.budget} />
         </div>
       )}
+      <NavBar
+        previous={`/day/day-${dayId && Number(dayId.split("-").at(-1)) - 1}`}
+        menu="/"
+        next={`/day/day-${dayId && Number(dayId.split("-").at(-1)) + 1}`}
+      />
     </>
   );
 }

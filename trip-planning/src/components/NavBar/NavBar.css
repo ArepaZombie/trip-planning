@@ -1,0 +1,13 @@
+.nav-bar {
+  width: 100svw;
+  display: flex;
+  justify-content: space-between;
+  padding: 20px 10px;
+  align-items: center;
+  background-color: var(--stone-dark);
+  height: 10px;
+  border: none;
+  margin-top: -1px;
+
+  /* MEJORAR ESTILOS */
+}
