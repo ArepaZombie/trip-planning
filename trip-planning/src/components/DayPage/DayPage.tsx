@@ -54,7 +54,16 @@ export default function DayPage() {
             <h1>{day.title}</h1>
           </div>
           <div className="screen-container">
-            <div className="timer-panel" style={{ height: `${time}vh` }}></div>
+            <div
+              className="timer-panel"
+              style={{
+                background: `linear-gradient(
+        var(--blue-dark) 0%,
+        var(--blue-dark) ${time}%,
+        var(--blue-dark-70) ${time + 1}%
+      )`,
+              }}
+            ></div>
             {selectedActivityId === "" ? (
               <SchedulePanel
                 activities={day.activities}

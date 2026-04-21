@@ -7,6 +7,13 @@
   box-shadow: 0px 0px 5px 3px var(--blue-light);
   grid-area: 1 / 1;
   z-index: 1;
+  display: grid;
+  grid-template-columns: 100%;
+  grid-template-rows: 5% 25% 1fr 5% 5%;
+
+  > div {
+    border-bottom: solid;
+  }
 
   .activity-header {
     /* TODO */
@@ -28,6 +35,88 @@
 
     .close-button {
       padding: 10px;
+    }
+  }
+
+  .activity-description,
+  .activity-tasks {
+    padding: 0 15px;
+    text-align: left;
+
+    .task-title {
+      margin-bottom: 0;
+    }
+
+    .task-item {
+      display: flex;
+      align-items: center;
+
+      input {
+        width: 12px !important;
+        height: 12px !important;
+        margin-right: 10px;
+        outline: 1px solid var(--blue-light);
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        -o-appearance: none;
+        appearance: none;
+
+        &:checked {
+          background-color: var(--blue-light);
+        }
+      }
+    }
+  }
+
+  .activity-options {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    align-items: center;
+    div {
+      height: 100%;
+      align-items: center;
+      justify-content: center;
+      display: flex;
+      background-color: var(--blue-darker);
+      border-right: solid;
+    }
+
+    :last-child {
+      border-right: none;
+    }
+    a {
+      text-decoration: none;
+      color: var(--blue-light);
+    }
+  }
+
+  .activity-resourses {
+    display: grid;
+    grid-template-columns: 65% 25% 10%;
+    align-items: center;
+
+    input,
+    button {
+      background-color: var(--blue-darker);
+      border: none;
+      outline: none;
+      font-family: var(--console-title-font);
+      color: var(--blue-light);
+      font-size: 14px;
+
+      &:focus-visible {
+        border: none;
+        outline: none;
+      }
+    }
+
+    input {
+      height: 90%;
+    }
+
+    button {
+      height: 100%;
+      border-left: 1px solid;
     }
   }
 }

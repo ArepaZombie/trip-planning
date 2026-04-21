@@ -38,8 +38,8 @@ export default function ActivityDetail({
   return (
     <div className="activity-panel">
       <div
-        onClick={() => setSelectedActivityId("")}
         className="activity-header"
+        onClick={() => setSelectedActivityId("")}
       >
         <p className="title-detail"> {activity?.title}</p>
 
@@ -49,22 +49,26 @@ export default function ActivityDetail({
         <p>Descripción:</p>
         <p>{activity?.description}</p>
       </div>
-      <div className="activity-missions">
-        <p>Misiones:</p>
+      <div className="activity-tasks">
+        <p className="task-title">Misiones:</p>
         <TaskItemList tasks={obligatoryTasks} />
-        <p>Opcionales:</p>
+        <p className="task-title">Opcionales:</p>
         <TaskItemList tasks={optionalTasks} />
       </div>
       <div className="activity-options">
-        <a href="">PRUEBAS</a>
-        <a href={activity?.destiny}>OBJETIVO</a>
-        <a href="" aria-disabled>
-          EDITAR
-        </a>
+        <div>
+          <a href="">PRUEBAS</a>
+        </div>
+        <div>
+          <a href={activity?.destiny}>OBJETIVO</a>
+        </div>
+        <div>
+          <a href="">EDITAR</a>
+        </div>
       </div>
       <div className="activity-resourses">
         <label htmlFor="budget">Ingrese recursos usados:</label>
-        <input type="number" />
+        <input type="number" name="budget" id="budget" />
         <button onClick={handleBudgetUpdate}>OK</button>
       </div>
     </div>
@@ -82,7 +86,7 @@ function TaskItemList({ tasks }: { tasks?: Task[] }) {
       {tasks && tasks.length > 0 ? (
         tasks.map((task) => {
           return (
-            <div>
+            <div className="task-item" key={task.id}>
               <input
                 type="checkbox"
                 checked={task.done}

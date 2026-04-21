@@ -6,7 +6,11 @@
   --blue-light: #55fdfb;
   --blue-dark: #184f6f;
   --blue-darker: #010c1f;
+  --red-light: #fd5555;
+  --red-dark: #6f1818;
+  --red-darker: #330303;
   --blue-darker-70: rgba(1, 12, 31, 0.7);
+  --blue-dark-70: rgb(24, 79, 111, 0.5);
   --console-text-font: "Oxanium", sans-serif;
   --console-title-font: "Science Gothic", sans-serif;
   --stone-text-font: "Caesar Dressing", system-ui;
