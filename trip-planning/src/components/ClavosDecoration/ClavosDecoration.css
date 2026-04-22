@@ -1,0 +1,26 @@
+.clavo {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  /* background-color: red; */
+  content: "";
+  display: block;
+  position: absolute;
+
+  &.cl-1 {
+    top: 5px;
+    right: 5px;
+  }
+  &.cl-2 {
+    top: 5px;
+    left: 5px;
+  }
+  &.cl-3 {
+    bottom: 5px;
+    right: 5px;
+  }
+  &.cl-4 {
+    bottom: 5px;
+    left: 5px;
+  }
+}

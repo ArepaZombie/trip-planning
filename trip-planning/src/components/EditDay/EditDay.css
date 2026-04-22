@@ -1,0 +1,35 @@
+.edit-day-page {
+  font-family: var(--stone-text-font);
+  padding: 20px;
+
+  h2 {
+    color: var(--stone-light);
+  }
+
+  .clavo {
+    background-color: var(--blue-dark);
+  }
+
+  .input-title-container {
+    .clavo {
+      background-color: var(--gray);
+    }
+    background-color: var(--stone-light);
+    padding: 10px;
+    position: relative;
+
+    input {
+      font-size: 24px;
+      background-color: var(--stone-light);
+      font-family: var(--stone-text-font);
+      width: 100%;
+      height: 50px;
+      border: none;
+
+      &:focus-visible {
+        border: none;
+        outline: none;
+      }
+    }
+  }
+}
