@@ -3,9 +3,12 @@ export default function InventoryPanel({
   color,
 }: {
   icon: string;
-  color: string;
+  color?: string;
 }) {
   return (
-    <i className={`fa-solid ${icon}`} style={{ color: `var(${color})` }} />
+    <i
+      className={`fa-solid ${icon}`}
+      style={{ color: color ? `var(${color})` : "" }}
+    />
   );
 }

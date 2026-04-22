@@ -13,7 +13,12 @@ export default function DayPage() {
   const [day, setDay] = useState<Day>();
   const [time, setTime] = useState<number>();
   const [selectedActivityId, setSelectedActivityId] = useState<string>("");
+
   const { dayId } = useParams();
+
+  const numberDay = Number(dayId?.split("-").at(-1));
+  const previousLink = numberDay > 1 && `/day/day-${numberDay - 1}`;
+  const nextLink = numberDay < 6 && `/day/day-${numberDay + 1}`;
 
   const calculateTime = () => {
     const now = new Date();
@@ -43,6 +48,7 @@ export default function DayPage() {
         setDay(result);
       }
     };
+
     getData();
   }, []);
 
@@ -82,11 +88,7 @@ export default function DayPage() {
           <BudgetWidget budget={day.budget} />
         </div>
       )}
-      <NavBar
-        previous={`/day/day-${dayId && Number(dayId.split("-").at(-1)) - 1}`}
-        menu="/"
-        next={`/day/day-${dayId && Number(dayId.split("-").at(-1)) + 1}`}
-      />
+      <NavBar previous={previousLink} menu="/" next={nextLink} />
     </>
   );
 }

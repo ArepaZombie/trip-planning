@@ -19,7 +19,6 @@ export default function ActivityDetail({
     const getData = async () => {
       if (activityId) {
         let result = await getActivityInfo(activityId, dayId);
-        console.log(result);
         setActivity(result);
       }
     };

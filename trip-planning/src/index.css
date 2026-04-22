@@ -9,6 +9,8 @@
   --red-light: #fd5555;
   --red-dark: #6f1818;
   --red-darker: #330303;
+  --gray: #898989;
+  --golden: #bf934a;
   --blue-darker-70: rgba(1, 12, 31, 0.7);
   --blue-dark-70: rgb(24, 79, 111, 0.5);
   --console-text-font: "Oxanium", sans-serif;
@@ -33,7 +35,8 @@
 
 body {
   margin: 0;
-  background-color: var(--stone-light);
+  padding: 0;
+  background-color: var(--stone-dark);
 }
 
 h1,

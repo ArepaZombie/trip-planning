@@ -1,0 +1,73 @@
+.trip-page {
+  height: 100%;
+  margin: 10px;
+  padding: 10px;
+  padding-bottom: 30px;
+  border-radius: 5px;
+  background-color: var(--stone-light);
+
+  .day-button {
+    display: grid;
+    grid-template-columns: 1fr 85% 1fr;
+    align-items: center;
+
+    &.not-passed * {
+      color: var(--gray);
+    }
+
+    &.today p,
+    &.today a {
+      color: var(--blue-light);
+      box-shadow: 0 0 5px 3px var(--blue-light);
+    }
+
+    &.passed {
+      .n-day,
+      .config-day {
+        color: var(--blue-light);
+      }
+      .title-day {
+        color: var(--stone-light);
+      }
+    }
+
+    .n-day,
+    .config-day {
+      align-content: center;
+      height: 25px;
+      background-color: var(--blue-darker);
+      font-family: var(--console-title-font);
+    }
+
+    .n-day {
+      border-radius: 5px 0 0 5px;
+    }
+
+    .config-day {
+      border-radius: 0 5px 5px 0;
+    }
+
+    .title-day {
+      height: 35px;
+      font-family: var(--stone-text-font);
+      background-color: var(--stone-dark);
+      text-decoration: none;
+      z-index: 2;
+      font-size: 18px;
+      text-transform: uppercase;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+
+      &::before,
+      &::after {
+        content: "";
+        display: block;
+        height: 45px;
+        width: 8px;
+        border-radius: 5px;
+        background-color: var(--golden);
+      }
+    }
+  }
+}
