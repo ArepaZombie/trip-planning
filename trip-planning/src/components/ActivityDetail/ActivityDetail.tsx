@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import type { Activity, Task } from "../../types";
 import Icon from "../Utils/Icon";
-import { getActivityInfo } from "../../firebase_firestore";
+import { checkTask, getActivityInfo } from "../../firebase_firestore";
 import "./ActivityDetail.css";
 
 export default function ActivityDetail({
@@ -19,7 +19,12 @@ export default function ActivityDetail({
     const getData = async () => {
       if (activityId) {
         let result = await getActivityInfo(activityId, dayId);
-        setActivity(result);
+        if (result) {
+          result.tasks = result?.tasks.map((t, i) => {
+            return { ...t, id: i };
+          });
+          setActivity(result);
+        }
       }
     };
 
@@ -29,6 +34,10 @@ export default function ActivityDetail({
   //TODO
   const handleBudgetUpdate = () => {
     console.log("ok");
+  };
+
+  const handleTaskCheck = async (index: number, done: boolean) => {
+    await checkTask(dayId, activityId, index, done);
   };
 
   const obligatoryTasks = activity?.tasks.filter((task) => !task.optional);
@@ -50,9 +59,12 @@ export default function ActivityDetail({
       </div>
       <div className="activity-tasks">
         <p className="task-title">Misiones:</p>
-        <TaskItemList tasks={obligatoryTasks} />
+        <TaskItemList
+          tasks={obligatoryTasks}
+          handleTaskCheck={handleTaskCheck}
+        />
         <p className="task-title">Opcionales:</p>
-        <TaskItemList tasks={optionalTasks} />
+        <TaskItemList tasks={optionalTasks} handleTaskCheck={handleTaskCheck} />
       </div>
       <div className="activity-options">
         <div>
@@ -74,30 +86,53 @@ export default function ActivityDetail({
   );
 }
 
-function TaskItemList({ tasks }: { tasks?: Task[] }) {
-  //TODO
-  const handleChangeTask = () => {
-    console.log("oktask");
-  };
-
+function TaskItemList({
+  tasks,
+  handleTaskCheck,
+}: {
+  tasks?: Task[];
+  handleTaskCheck: any;
+}) {
   return (
     <>
       {tasks && tasks.length > 0 ? (
         tasks.map((task) => {
           return (
-            <div className="task-item" key={task.id}>
-              <input
-                type="checkbox"
-                checked={task.done}
-                onChange={handleChangeTask}
-              />
-              <p>{task.text}</p>
-            </div>
+            <TaskItem
+              key={task.id}
+              task={task}
+              handleTaskCheck={handleTaskCheck}
+            />
           );
         })
       ) : (
         <p>No hay tareas ingresadas.</p>
       )}
     </>
+  );
+}
+
+function TaskItem({
+  task,
+  handleTaskCheck,
+}: {
+  task: Task;
+  handleTaskCheck: any;
+}) {
+  const [checked, setChecked] = useState<boolean>(task.done);
+
+  useEffect(() => {
+    handleTaskCheck(task.id, checked);
+  }, [checked]);
+
+  const checkHandler = () => {
+    setChecked(!checked);
+  };
+
+  return (
+    <div className="task-item">
+      <input type="checkbox" checked={checked} onChange={checkHandler} />
+      <p className={checked ? "checked-task" : ""}>{task.text}</p>
+    </div>
   );
 }

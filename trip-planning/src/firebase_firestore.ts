@@ -27,6 +27,7 @@ const TRIP_COLLECTION = "trips";
 const DAYS_COLLECTION = "days";
 const ACTIVITIES_COLLECTION = "activities";
 const HONEYMOON_ID = "honeymoon";
+const PACKING_ITEMS = "packingItems";
 
 export const getTrips = async () => {
   const query = await getDocs(collection(db, TRIP_COLLECTION));
@@ -110,4 +111,45 @@ export const getActivityInfo = async (
   const daySnap = await getDoc(doc(db, linkArray.join("/"), activityId));
 
   return daySnap.data() as Activity;
+};
+
+export const checkItem = async (
+  dayId: string,
+  index: number,
+  checked: boolean,
+  tripId: string = HONEYMOON_ID,
+) => {
+  //Query para info del día
+  let linkArray = [TRIP_COLLECTION, tripId, DAYS_COLLECTION];
+  const dayRef = doc(db, linkArray.join("/"), dayId);
+  const daySnap = await getDoc(dayRef);
+  const packingItems = daySnap.data()?.packingItems ?? [];
+
+  packingItems[index] = { ...packingItems[index], checked };
+
+  await updateDoc(dayRef, { packingItems });
+};
+
+export const checkTask = async (
+  dayId: string,
+  activityId: string,
+  index: number,
+  done: boolean,
+  tripId: string = HONEYMOON_ID,
+) => {
+  //Query para info del día
+  let linkArray = [
+    TRIP_COLLECTION,
+    tripId,
+    DAYS_COLLECTION,
+    dayId,
+    ACTIVITIES_COLLECTION,
+  ];
+  const actRef = doc(db, linkArray.join("/"), activityId);
+  const actSnap = await getDoc(actRef);
+  const tasks = actSnap.data()?.tasks ?? [];
+
+  tasks[index] = { ...tasks[index], done };
+
+  await updateDoc(actRef, { tasks });
 };

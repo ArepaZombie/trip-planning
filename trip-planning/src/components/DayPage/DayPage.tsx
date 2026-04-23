@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { getDayInfo } from "../../firebase_firestore";
+import { checkItem, getDayInfo } from "../../firebase_firestore";
 import type { Day } from "../../types";
 import { useParams } from "react-router-dom";
 import SchedulePanel from "../SchedulePanel/SchedulePanel";
@@ -52,6 +52,10 @@ export default function DayPage() {
     getData();
   }, []);
 
+  const checkItemHandler = async (index: number, checked: boolean) => {
+    await checkItem(dayId || "", index, checked);
+  };
+
   return (
     <>
       {day && (
@@ -84,7 +88,10 @@ export default function DayPage() {
               />
             )}
           </div>
-          <InventoryPanel items={day.packingItems} />
+          <InventoryPanel
+            items={day.packingItems}
+            checkItemHandler={checkItemHandler}
+          />
           <BudgetWidget budget={day.budget} />
         </div>
       )}

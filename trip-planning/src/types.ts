@@ -12,14 +12,14 @@ export interface PackingItem {
 }
 
 export interface Task {
-  id: string;
+  id: string | number;
   text: string;
   optional: boolean;
   done: boolean;
 }
 
 export interface Activity {
-  id: string;
+  id: string | number;
   title: string;
   description: string;
   startTime: string;
