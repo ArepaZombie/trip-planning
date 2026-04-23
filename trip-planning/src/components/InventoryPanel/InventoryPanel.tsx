@@ -17,7 +17,7 @@ export default function InventoryPanel({ items }: { items: PackingItem[] }) {
         {items.map((item) => (
           <div
             key={item.id}
-            className={`${checked && "checked"}`}
+            className={`icon-cell ${checked && "checked"}`}
             onClick={checkHandler}
           >
             <Icon

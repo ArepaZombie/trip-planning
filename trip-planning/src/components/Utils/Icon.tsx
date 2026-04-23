@@ -1,4 +1,4 @@
-export default function InventoryPanel({
+export default function Icon({
   icon,
   color,
   onClick,

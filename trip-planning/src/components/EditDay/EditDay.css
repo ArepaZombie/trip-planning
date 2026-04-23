@@ -79,7 +79,7 @@
         display: flex;
         align-items: center;
         justify-content: center;
-        border: solid 8px var(--stone-light);
+        border: solid 8px var(--stone-light-2);
         border-radius: 50%;
         margin: 5px;
       }
@@ -105,4 +105,22 @@
     border-radius: 5px;
     margin: 10px 5px;
   }
+}
+
+.items-update-panel {
+  .icon-cell {
+    width: 45px;
+    height: 45px;
+    background-color: var(--stone-light-2);
+    margin-top: 15px;
+  }
+}
+
+.send-button {
+  width: 65px;
+  height: 65px;
+  background-color: var(--blue-light);
+  border: solid 8px black;
+  border-radius: 50%;
+  margin: 20px auto;
 }

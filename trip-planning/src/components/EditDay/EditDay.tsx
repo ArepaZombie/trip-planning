@@ -7,6 +7,7 @@ import ClavosDecoration from "../ClavosDecoration/ClavosDecoration";
 import DateChanger from "./DateChanger";
 import BudgetEditor from "./BudgetEditor";
 import { setNestedValue } from "../../utils";
+import ItemsUpdate from "./ItemsUpdate";
 
 export default function EditDayPage() {
   const [day, setDay] = useState<any>();
@@ -23,16 +24,16 @@ export default function EditDayPage() {
     getData();
   }, []);
 
-  useEffect(() => {
-    day && console.log(day.budget);
-  }, [day]);
-
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     setDay((prev: any) => ({ ...prev, [e.target.name]: e.target.value }));
   };
 
   const handleManualChange = (index: string, value: string) => {
     setDay((prev: any) => setNestedValue(prev, index.split("."), value));
+  };
+
+  const handleUpdate = () => {
+    console.log(day);
   };
 
   return (
@@ -43,12 +44,17 @@ export default function EditDayPage() {
         <>
           <TitleInput title={day.title} handleChange={handleChange} />
           <DateChanger date={day.date} handleDateChange={handleManualChange} />
+          <ItemsUpdate
+            itemsActive={day.packingItems}
+            handleItemsUpdate={handleManualChange}
+          />
           <BudgetEditor
             budget={day.budget?.expected}
             handleBudgetChange={handleManualChange}
           />
         </>
       )}
+      <div onClick={handleUpdate} className="send-button"></div>
     </div>
   );
 }

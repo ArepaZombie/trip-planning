@@ -5,7 +5,7 @@ export interface Trip {
 }
 
 export interface PackingItem {
-  id: string;
+  id?: string;
   label: string;
   icon: string;
   checked: boolean;
