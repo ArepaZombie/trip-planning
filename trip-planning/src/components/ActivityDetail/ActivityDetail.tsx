@@ -1,8 +1,13 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, type ChangeEvent } from "react";
 import type { Activity, Task } from "../../types";
 import Icon from "../Utils/Icon";
-import { checkTask, getActivityInfo } from "../../firebase_firestore";
+import {
+  checkTask,
+  getActivityInfo,
+  updateBudget,
+} from "../../firebase_firestore";
 import "./ActivityDetail.css";
+import { useNavigate } from "react-router-dom";
 
 export default function ActivityDetail({
   activityId,
@@ -14,6 +19,8 @@ export default function ActivityDetail({
   setSelectedActivityId: any;
 }) {
   const [activity, setActivity] = useState<Activity>();
+  const [budget, setBudget] = useState<number>(0);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const getData = async () => {
@@ -32,8 +39,15 @@ export default function ActivityDetail({
   }, [activityId]);
 
   //TODO
-  const handleBudgetUpdate = () => {
-    console.log("ok");
+  const handleBudgetUpdate = async () => {
+    await updateBudget(dayId, budget);
+    alert("Budget actualizado");
+    setBudget(0);
+    navigate(0);
+  };
+
+  const handleBudgetChange = (e: ChangeEvent<HTMLInputElement>) => {
+    setBudget(Number(e.target.value));
   };
 
   const handleTaskCheck = async (index: number, done: boolean) => {
@@ -79,7 +93,12 @@ export default function ActivityDetail({
       </div>
       <div className="activity-resourses">
         <label htmlFor="budget">Ingrese recursos usados:</label>
-        <input type="number" name="budget" id="budget" />
+        <input
+          type="number"
+          name="budget"
+          id="budget"
+          onChange={handleBudgetChange}
+        />
         <button onClick={handleBudgetUpdate}>OK</button>
       </div>
     </div>

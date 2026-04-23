@@ -95,6 +95,23 @@ export const updateDayInfo = async (
   }
 };
 
+export const updateBudget = async (
+  dayId: string,
+  budgetUse: number,
+  tripId: string = HONEYMOON_ID,
+) => {
+  if (dayId) {
+    //Query para info del día
+    let linkArray = [TRIP_COLLECTION, tripId, DAYS_COLLECTION];
+    const dayRef = doc(db, linkArray.join("/"), dayId);
+    const daySnap = await getDoc(dayRef);
+    const budget = daySnap.data()?.budget;
+    const newBudget = { ...budget, spent: budget.spent + budgetUse };
+
+    await updateDoc(dayRef, { budget: newBudget });
+  }
+};
+
 export const getActivityInfo = async (
   activityId: string,
   dayId: string,
