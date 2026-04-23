@@ -6,6 +6,7 @@ import {
   getDoc,
   getDocs,
   getFirestore,
+  updateDoc,
 } from "firebase/firestore";
 import type { Activity, Day, Trip } from "./types";
 
@@ -70,6 +71,26 @@ export const getDayInfo = async (id: string, tripId: string = HONEYMOON_ID) => {
       ...daySnap.data(),
       activities: actSnap.docs.map((doc) => ({ id: doc.id, ...doc.data() })),
     } as Day & { activities: Activity[] };
+  }
+};
+
+export const updateDayInfo = async (
+  id: string,
+  dayInfo: Day,
+  tripId: string = HONEYMOON_ID,
+) => {
+  if (id) {
+    //Query para info del día
+    let linkArray = [TRIP_COLLECTION, tripId, DAYS_COLLECTION];
+    const docRed = doc(db, linkArray.join("/"), id);
+    const newDay = {
+      title: dayInfo.title,
+      date: dayInfo.date,
+      packingItems: dayInfo.packingItems,
+      budget: dayInfo.budget,
+    };
+
+    await updateDoc(docRed, newDay);
   }
 };
 

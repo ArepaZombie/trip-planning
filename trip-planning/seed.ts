@@ -24,31 +24,11 @@ const data = {
       date: "2026-07-11",
       budget: { expected: 150, spent: 0 },
       packingItems: [
-        {
-          id: "pk-1-1",
-          label: "Agua",
-          icon: "fa-bottle-water",
-          checked: false,
-        },
-        {
-          id: "pk-1-2",
-          label: "Snacks",
-          icon: "fa-cookie-bite",
-          checked: false,
-        },
-        {
-          id: "pk-1-3",
-          label: "Zapatillas",
-          icon: "fa-shoe-prints",
-          checked: false,
-        },
-        { id: "pk-1-4", label: "Pastillas", icon: "fa-pills", checked: false },
-        {
-          id: "pk-1-5",
-          label: "Bloqueador solar",
-          icon: "fa-sun",
-          checked: false,
-        },
+        { label: "Agua", icon: "fa-bottle-water", checked: false },
+        { label: "Snacks", icon: "fa-cookie-bite", checked: false },
+        { label: "Zapatillas", icon: "fa-shoe-prints", checked: false },
+        { label: "Pastillas", icon: "fa-pills", checked: false },
+        { label: "Bloqueador solar", icon: "fa-sun", checked: false },
       ],
       activities: [
         {
@@ -64,19 +44,16 @@ const data = {
           photos: [],
           tasks: [
             {
-              id: "task-1-1-1",
               text: "Imprimir o descargar boarding pass",
               optional: false,
               done: false,
             },
             {
-              id: "task-1-1-2",
               text: "Llegar al aeropuerto 2 horas antes",
               optional: false,
               done: false,
             },
             {
-              id: "task-1-1-3",
               text: "Llevar snacks para el vuelo",
               optional: true,
               done: false,
@@ -95,7 +72,6 @@ const data = {
           photos: [],
           tasks: [
             {
-              id: "task-1-2-1",
               text: "Coordinar transporte desde aeropuerto de Jaén",
               optional: false,
               done: false,
@@ -114,7 +90,6 @@ const data = {
           photos: [],
           tasks: [
             {
-              id: "task-1-3-1",
               text: "Confirmar reserva del hotel",
               optional: false,
               done: false,
@@ -153,32 +128,12 @@ const data = {
       date: "2026-07-12",
       budget: { expected: 200, spent: 0 },
       packingItems: [
-        {
-          id: "pk-2-1",
-          label: "Agua",
-          icon: "fa-bottle-water",
-          checked: false,
-        },
-        {
-          id: "pk-2-2",
-          label: "Snacks",
-          icon: "fa-cookie-bite",
-          checked: false,
-        },
-        {
-          id: "pk-2-3",
-          label: "Zapatillas",
-          icon: "fa-shoe-prints",
-          checked: false,
-        },
-        { id: "pk-2-4", label: "Pastillas", icon: "fa-pills", checked: false },
-        {
-          id: "pk-2-5",
-          label: "Bloqueador solar",
-          icon: "fa-sun",
-          checked: false,
-        },
-        { id: "pk-2-6", label: "Gorra", icon: "fa-hat-cowboy", checked: false },
+        { label: "Agua", icon: "fa-bottle-water", checked: false },
+        { label: "Snacks", icon: "fa-cookie-bite", checked: false },
+        { label: "Zapatillas", icon: "fa-shoe-prints", checked: false },
+        { label: "Pastillas", icon: "fa-pills", checked: false },
+        { label: "Bloqueador solar", icon: "fa-sun", checked: false },
+        { label: "Gorra", icon: "fa-hat-cowboy", checked: false },
       ],
       activities: [
         {
@@ -204,13 +159,11 @@ const data = {
           photos: [],
           tasks: [
             {
-              id: "task-2-2-1",
               text: "Comprar entradas al teleférico con anticipación",
               optional: false,
               done: false,
             },
             {
-              id: "task-2-2-2",
               text: "Llevar cámara o cargar celular",
               optional: true,
               done: false,
@@ -250,12 +203,7 @@ const data = {
           icon: "fa-utensils",
           photos: [],
           tasks: [
-            {
-              id: "task-2-5-1",
-              text: "Hacer reserva en Poraí",
-              optional: false,
-              done: false,
-            },
+            { text: "Hacer reserva en Poraí", optional: false, done: false },
           ],
         },
       ],
@@ -267,31 +215,11 @@ const data = {
       date: "2026-07-13",
       budget: { expected: 120, spent: 0 },
       packingItems: [
-        {
-          id: "pk-3-1",
-          label: "Agua",
-          icon: "fa-bottle-water",
-          checked: false,
-        },
-        {
-          id: "pk-3-2",
-          label: "Snacks",
-          icon: "fa-cookie-bite",
-          checked: false,
-        },
-        {
-          id: "pk-3-3",
-          label: "Zapatillas",
-          icon: "fa-shoe-prints",
-          checked: false,
-        },
-        { id: "pk-3-4", label: "Pastillas", icon: "fa-pills", checked: false },
-        {
-          id: "pk-3-5",
-          label: "Bloqueador solar",
-          icon: "fa-sun",
-          checked: false,
-        },
+        { label: "Agua", icon: "fa-bottle-water", checked: false },
+        { label: "Snacks", icon: "fa-cookie-bite", checked: false },
+        { label: "Zapatillas", icon: "fa-shoe-prints", checked: false },
+        { label: "Pastillas", icon: "fa-pills", checked: false },
+        { label: "Bloqueador solar", icon: "fa-sun", checked: false },
       ],
       activities: [
         {
@@ -341,7 +269,6 @@ const data = {
           photos: [],
           tasks: [
             {
-              id: "task-3-4-1",
               text: "Comprar souvenirs para la familia",
               optional: true,
               done: false,
@@ -369,44 +296,14 @@ const data = {
       date: "2026-07-14",
       budget: { expected: 250, spent: 0 },
       packingItems: [
-        {
-          id: "pk-4-1",
-          label: "Agua",
-          icon: "fa-bottle-water",
-          checked: false,
-        },
-        {
-          id: "pk-4-2",
-          label: "Snacks",
-          icon: "fa-cookie-bite",
-          checked: false,
-        },
-        {
-          id: "pk-4-3",
-          label: "Zapatillas",
-          icon: "fa-shoe-prints",
-          checked: false,
-        },
-        { id: "pk-4-4", label: "Pastillas", icon: "fa-pills", checked: false },
-        {
-          id: "pk-4-5",
-          label: "Bloqueador solar",
-          icon: "fa-sun",
-          checked: false,
-        },
-        {
-          id: "pk-4-6",
-          label: "Impermeable",
-          icon: "fa-umbrella",
-          checked: false,
-        },
-        { id: "pk-4-7", label: "Ropa extra", icon: "fa-shirt", checked: false },
-        {
-          id: "pk-4-8",
-          label: "Condones 😏",
-          icon: "fa-heart",
-          checked: false,
-        },
+        { label: "Agua", icon: "fa-bottle-water", checked: false },
+        { label: "Snacks", icon: "fa-cookie-bite", checked: false },
+        { label: "Zapatillas", icon: "fa-shoe-prints", checked: false },
+        { label: "Pastillas", icon: "fa-pills", checked: false },
+        { label: "Bloqueador solar", icon: "fa-sun", checked: false },
+        { label: "Impermeable", icon: "fa-droplet-slash", checked: false },
+        { label: "Ropa extra", icon: "fa-shirt", checked: false },
+        { label: "Condones", icon: "fa-shield-heart", checked: false },
       ],
       activities: [
         {
@@ -420,13 +317,11 @@ const data = {
           photos: [],
           tasks: [
             {
-              id: "task-4-1-1",
               text: "Coordinar transporte la noche anterior",
               optional: false,
               done: false,
             },
             {
-              id: "task-4-1-2",
               text: "Preparar mochila con lo esencial para la caminata",
               optional: false,
               done: false,
@@ -444,13 +339,11 @@ const data = {
           photos: [],
           tasks: [
             {
-              id: "task-4-2-1",
               text: "Llevar cambio de ropa seca",
               optional: false,
               done: false,
             },
             {
-              id: "task-4-2-2",
               text: "Llevar suficiente agua para la caminata",
               optional: false,
               done: false,
@@ -480,13 +373,11 @@ const data = {
           photos: [],
           tasks: [
             {
-              id: "task-4-4-1",
               text: "Confirmar reserva del lodge",
               optional: false,
               done: false,
             },
             {
-              id: "task-4-4-2",
               text: "Preparar sorpresa romántica 💕",
               optional: true,
               done: false,
@@ -513,31 +404,11 @@ const data = {
       date: "2026-07-15",
       budget: { expected: 100, spent: 0 },
       packingItems: [
-        {
-          id: "pk-5-1",
-          label: "Agua",
-          icon: "fa-bottle-water",
-          checked: false,
-        },
-        {
-          id: "pk-5-2",
-          label: "Snacks",
-          icon: "fa-cookie-bite",
-          checked: false,
-        },
-        {
-          id: "pk-5-3",
-          label: "Zapatillas",
-          icon: "fa-shoe-prints",
-          checked: false,
-        },
-        { id: "pk-5-4", label: "Pastillas", icon: "fa-pills", checked: false },
-        {
-          id: "pk-5-5",
-          label: "Bloqueador solar",
-          icon: "fa-sun",
-          checked: false,
-        },
+        { label: "Agua", icon: "fa-bottle-water", checked: false },
+        { label: "Snacks", icon: "fa-cookie-bite", checked: false },
+        { label: "Zapatillas", icon: "fa-shoe-prints", checked: false },
+        { label: "Pastillas", icon: "fa-pills", checked: false },
+        { label: "Bloqueador solar", icon: "fa-sun", checked: false },
       ],
       activities: [
         {
@@ -584,7 +455,6 @@ const data = {
           photos: [],
           tasks: [
             {
-              id: "task-5-4-1",
               text: "Llegar antes del atardecer para la mejor foto",
               optional: true,
               done: false,
@@ -611,37 +481,12 @@ const data = {
       date: "2026-07-16",
       budget: { expected: 180, spent: 0 },
       packingItems: [
-        {
-          id: "pk-6-1",
-          label: "Agua",
-          icon: "fa-bottle-water",
-          checked: false,
-        },
-        {
-          id: "pk-6-2",
-          label: "Snacks",
-          icon: "fa-cookie-bite",
-          checked: false,
-        },
-        {
-          id: "pk-6-3",
-          label: "Zapatillas",
-          icon: "fa-shoe-prints",
-          checked: false,
-        },
-        { id: "pk-6-4", label: "Pastillas", icon: "fa-pills", checked: false },
-        {
-          id: "pk-6-5",
-          label: "Bloqueador solar",
-          icon: "fa-sun",
-          checked: false,
-        },
-        {
-          id: "pk-6-6",
-          label: "Linterna",
-          icon: "fa-flashlight",
-          checked: false,
-        },
+        { label: "Agua", icon: "fa-bottle-water", checked: false },
+        { label: "Snacks", icon: "fa-cookie-bite", checked: false },
+        { label: "Zapatillas", icon: "fa-shoe-prints", checked: false },
+        { label: "Pastillas", icon: "fa-pills", checked: false },
+        { label: "Bloqueador solar", icon: "fa-sun", checked: false },
+        { label: "Linterna", icon: "fa-lightbulb", checked: false },
       ],
       activities: [
         {
@@ -668,7 +513,6 @@ const data = {
           photos: [],
           tasks: [
             {
-              id: "task-6-2-1",
               text: "Contratar guía local para Karajía",
               optional: true,
               done: false,
@@ -697,7 +541,6 @@ const data = {
           photos: [],
           tasks: [
             {
-              id: "task-6-4-1",
               text: "Cargar la linterna antes de salir",
               optional: false,
               done: false,
@@ -735,31 +578,11 @@ const data = {
       date: "2026-07-17",
       budget: { expected: 150, spent: 0 },
       packingItems: [
-        {
-          id: "pk-7-1",
-          label: "Agua",
-          icon: "fa-bottle-water",
-          checked: false,
-        },
-        {
-          id: "pk-7-2",
-          label: "Snacks",
-          icon: "fa-cookie-bite",
-          checked: false,
-        },
-        {
-          id: "pk-7-3",
-          label: "Zapatillas",
-          icon: "fa-shoe-prints",
-          checked: false,
-        },
-        { id: "pk-7-4", label: "Pastillas", icon: "fa-pills", checked: false },
-        {
-          id: "pk-7-5",
-          label: "Bloqueador solar",
-          icon: "fa-sun",
-          checked: false,
-        },
+        { label: "Agua", icon: "fa-bottle-water", checked: false },
+        { label: "Snacks", icon: "fa-cookie-bite", checked: false },
+        { label: "Zapatillas", icon: "fa-shoe-prints", checked: false },
+        { label: "Pastillas", icon: "fa-pills", checked: false },
+        { label: "Bloqueador solar", icon: "fa-sun", checked: false },
       ],
       activities: [
         {
@@ -772,14 +595,8 @@ const data = {
           icon: "fa-utensils",
           photos: [],
           tasks: [
+            { text: "Hacer checkout del hotel", optional: false, done: false },
             {
-              id: "task-7-1-1",
-              text: "Hacer checkout del hotel",
-              optional: false,
-              done: false,
-            },
-            {
-              id: "task-7-1-2",
               text: "Revisar que no quede nada olvidado en la habitación",
               optional: false,
               done: false,
@@ -809,7 +626,6 @@ const data = {
           photos: [],
           tasks: [
             {
-              id: "task-7-3-1",
               text: "Buscar buen restaurant en Jaén con anticipación",
               optional: false,
               done: false,
@@ -849,13 +665,11 @@ const data = {
           photos: [],
           tasks: [
             {
-              id: "task-7-6-1",
               text: "Hacer check-in online del vuelo",
               optional: false,
               done: false,
             },
             {
-              id: "task-7-6-2",
               text: "Llegar al aeropuerto con 1.5 horas de anticipación",
               optional: false,
               done: false,

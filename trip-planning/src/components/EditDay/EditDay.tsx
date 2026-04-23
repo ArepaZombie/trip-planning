@@ -1,7 +1,7 @@
-import { useParams } from "react-router-dom";
+import { redirect, useNavigate, useParams } from "react-router-dom";
 import "./EditDay.css";
 import { useEffect, useState, type ChangeEvent } from "react";
-import { getDayInfo } from "../../firebase_firestore";
+import { getDayInfo, updateDayInfo } from "../../firebase_firestore";
 import TitleInput from "./TitleInput";
 import ClavosDecoration from "../ClavosDecoration/ClavosDecoration";
 import DateChanger from "./DateChanger";
@@ -12,6 +12,7 @@ import ItemsUpdate from "./ItemsUpdate";
 export default function EditDayPage() {
   const [day, setDay] = useState<any>();
   const { dayId } = useParams();
+  const navigate = useNavigate();
 
   useEffect(() => {
     const getData = async () => {
@@ -32,8 +33,13 @@ export default function EditDayPage() {
     setDay((prev: any) => setNestedValue(prev, index.split("."), value));
   };
 
-  const handleUpdate = () => {
-    console.log(day);
+  const handleUpdate = async () => {
+    try {
+      await updateDayInfo(dayId || "", day);
+      navigate(`/day/${dayId}`);
+    } catch {
+      console.error("Error");
+    }
   };
 
   return (
