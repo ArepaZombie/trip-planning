@@ -5,6 +5,8 @@ import { getDayInfo } from "../../firebase_firestore";
 import TitleInput from "./TitleInput";
 import ClavosDecoration from "../ClavosDecoration/ClavosDecoration";
 import DateChanger from "./DateChanger";
+import BudgetEditor from "./BudgetEditor";
+import { setNestedValue } from "../../utils";
 
 export default function EditDayPage() {
   const [day, setDay] = useState<any>();
@@ -22,7 +24,7 @@ export default function EditDayPage() {
   }, []);
 
   useEffect(() => {
-    console.log(day);
+    day && console.log(day.budget);
   }, [day]);
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
@@ -30,7 +32,7 @@ export default function EditDayPage() {
   };
 
   const handleManualChange = (index: string, value: string) => {
-    setDay((prev: any) => ({ ...prev, [index]: value }));
+    setDay((prev: any) => setNestedValue(prev, index.split("."), value));
   };
 
   return (
@@ -41,6 +43,10 @@ export default function EditDayPage() {
         <>
           <TitleInput title={day.title} handleChange={handleChange} />
           <DateChanger date={day.date} handleDateChange={handleManualChange} />
+          <BudgetEditor
+            budget={day.budget?.expected}
+            handleBudgetChange={handleManualChange}
+          />
         </>
       )}
     </div>
