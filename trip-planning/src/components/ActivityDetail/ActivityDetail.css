@@ -1,5 +1,6 @@
 .activity-panel {
   height: 100vh;
+  position: relative;
   font-family: var(--console-title-font);
   font-size: 14px;
   background-color: var(--blue-darker-70);

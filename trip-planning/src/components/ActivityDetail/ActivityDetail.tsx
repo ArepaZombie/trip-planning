@@ -59,6 +59,17 @@ export default function ActivityDetail({
 
   return (
     <div className="activity-panel">
+      <Icon
+        icon={activity?.icon || ""}
+        style={{
+          position: "absolute",
+          top: "40%",
+          left: "20%",
+          opacity: "0.1",
+          fontSize: 200,
+          zIndex: -1,
+        }}
+      />
       <div
         className="activity-header"
         onClick={() => setSelectedActivityId("")}
