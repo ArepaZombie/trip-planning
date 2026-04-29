@@ -1,21 +1,44 @@
 .activity-panel {
   height: 100vh;
   position: relative;
+  color: var(--blue-light);
   font-family: var(--console-title-font);
   font-size: 14px;
   background-color: var(--blue-darker-70);
-  color: var(--blue-light);
   box-shadow: 0px 0px 5px 3px var(--blue-light);
   grid-area: 1 / 1;
   z-index: 1;
-  display: grid;
-  grid-template-columns: 100%;
-  grid-template-rows: 5% 25% 1fr 5% 5%;
 
-  /* TODO: PONER BACKGROUND DE ICON */
+  .activity-detail {
+    height: 100%;
+    display: grid;
+    grid-template-columns: 100%;
+    grid-template-rows: 5% 25% 1fr 5% 5%;
+  }
+  .activity-detail,
+  .activity-edit {
+    > div {
+      border-bottom: solid;
 
-  > div {
-    border-bottom: solid;
+      textarea::-webkit-scrollbar {
+        /* background-color: var(--blue-darker); */
+        width: 5px;
+      }
+    }
+  }
+
+  div::-webkit-scrollbar {
+    /* background-color: var(--blue-darker); */
+    width: 5px;
+  }
+
+  div::-webkit-scrollbar-thumb {
+    background-color: var(--blue-light);
+    /* outline: 1px solid slategrey; */
+  }
+
+  div::-webkit-scrollbar-corner {
+    display: none;
   }
 
   .activity-header {
@@ -45,6 +68,7 @@
   .activity-tasks {
     padding: 0 15px;
     text-align: left;
+    overflow: scroll;
 
     .task-title {
       margin-bottom: 0;
@@ -58,10 +82,14 @@
         text-decoration: line-through;
       }
 
-      input {
+      p,
+      input[type="text"] {
+        margin-left: 10px;
+      }
+
+      input[type="checkbox"] {
         width: 12px !important;
         height: 10px !important;
-        margin-right: 10px;
         outline: 1px solid var(--blue-light);
         -webkit-appearance: none;
         -moz-appearance: none;
@@ -124,6 +152,118 @@
     button {
       height: 100%;
       border-left: 1px solid;
+    }
+  }
+
+  .activity-edit {
+    height: 100%;
+
+    display: grid;
+    grid-template-columns: 100%;
+    grid-template-rows: 5% 5% 5% 25% 1fr 5%;
+
+    .activity-header,
+    .activity-edit-schedule,
+    .activity-edit-destiny {
+      background-color: var(--blue-darker);
+      align-items: center;
+      border-bottom: solid;
+    }
+
+    .activity-edit-schedule {
+      display: flex;
+      justify-content: space-around;
+      text-align: center;
+
+      input {
+        text-align: center;
+        width: 40%;
+        color: var(--blue-light);
+      }
+
+      input[type="time"]::-webkit-calendar-picker-indicator {
+        display: none;
+        -webkit-appearance: none;
+      }
+    }
+
+    .activity-edit-destiny {
+      display: flex;
+      flex-direction: row;
+      align-content: center;
+      align-items: center;
+
+      select,
+      input {
+        height: 100%;
+
+        &:focus-visible {
+          border-left: solid;
+        }
+      }
+
+      select {
+        width: 20%;
+        border-left: solid;
+      }
+      input {
+        width: 100%;
+      }
+    }
+
+    .activity-description {
+      textarea {
+        width: 100%;
+        height: 60%;
+      }
+
+      textarea::-webkit-scrollbar {
+        /* background-color: var(--blue-darker); */
+        width: 5px;
+      }
+
+      textarea::-webkit-scrollbar-thumb {
+        background-color: var(--blue-light);
+        /* outline: 1px solid slategrey; */
+      }
+
+      textarea::-webkit-scrollbar-corner {
+        display: none;
+      }
+    }
+
+    .activity-tasks {
+      input {
+        margin: 10px 10px;
+        font-size: 16px;
+        width: 100%;
+      }
+      i {
+        font-size: 18px;
+      }
+    }
+
+    .save-activity-button {
+      grid-column: 2/4;
+    }
+
+    input,
+    button,
+    select,
+    option,
+    textarea {
+      background-color: var(--blue-darker);
+      border: none;
+      outline: none;
+      font-family: var(--console-title-font);
+      color: var(--blue-light);
+      font-size: 14px;
+
+      &:focus-visible {
+        border: none;
+        outline: none;
+        background-color: var(--blue-dark);
+      }
     }
   }
 }
