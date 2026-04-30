@@ -67,7 +67,13 @@ export default function ActivityDetailView({
       </div>
       <div className="activity-options">
         <div>
-          <a href="">PRUEBAS</a>
+          <a
+            onClick={() => {
+              console.log("PRUEBAS");
+            }}
+          >
+            PRUEBAS
+          </a>
         </div>
         <div>
           <a href={activity?.destiny}>DESTINO</a>

@@ -1,5 +1,6 @@
 import "firebase/firestore";
 import firebase from "firebase/compat/app";
+import { getAuth, signInWithEmailAndPassword, signOut } from "firebase/auth";
 import {
   collection,
   deleteDoc,
@@ -23,8 +24,9 @@ const firebaseConfig = {
 };
 
 // Initialize Firebase
-firebase.initializeApp(firebaseConfig);
+const app = firebase.initializeApp(firebaseConfig);
 const db = getFirestore();
+export const auth = getAuth(app);
 const TRIP_COLLECTION = "trips";
 const DAYS_COLLECTION = "days";
 const ACTIVITIES_COLLECTION = "activities";
@@ -148,9 +150,7 @@ export const updateActivityInfo = async (
     ACTIVITIES_COLLECTION,
   ];
 
-  const actId =
-    activityId === "new" ? generateActivityId(dayId, nActivities) : activityId;
-  const daySnap = doc(db, linkArray.join("/"), actId);
+  const daySnap = doc(db, linkArray.join("/"), activityId);
   const actDict: Record<string, unknown> = {};
 
   for (const key of Object.keys(activityInfo) as (keyof Activity)[]) {
@@ -219,7 +219,11 @@ export const checkTask = async (
   await updateDoc(actRef, { tasks });
 };
 
-const generateActivityId = (dayId: string, nActivities: number = 0) => {
-  let dayN = dayId.split("-")[1];
-  return `act-${dayN}-${nActivities + 1}`;
+export const logInFirebase = async (email: string, password: string) => {
+  const credential = await signInWithEmailAndPassword(auth, email, password);
+  return credential.user;
+};
+
+export const logOutFirebase = async () => {
+  await signOut(auth);
 };

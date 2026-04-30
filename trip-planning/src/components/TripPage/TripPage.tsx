@@ -1,5 +1,9 @@
 import { useEffect, useState } from "react";
-import { getDaysByTrip, getTripInfo } from "../../firebase_firestore";
+import {
+  getDaysByTrip,
+  getTripInfo,
+  logOutFirebase,
+} from "../../firebase_firestore";
 import type { Day, Trip } from "../../types";
 import DayList from "./DayList";
 import "./TripPage.css";
@@ -20,6 +24,10 @@ export default function TripPage() {
     getData();
   }, []);
 
+  const handleLogOut = async () => {
+    await logOutFirebase();
+  };
+
   return (
     <div className="trip-page">
       {trip && days && (
@@ -28,6 +36,8 @@ export default function TripPage() {
           <DayList days={days} />
         </div>
       )}
+
+      {/* <div onClick={handleLogOut}>CERRAR SESION</div> */}
     </div>
   );
 }
