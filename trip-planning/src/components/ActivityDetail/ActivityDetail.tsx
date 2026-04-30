@@ -49,19 +49,22 @@ export default function ActivityDetail({
     getData();
   }, [activityId]);
 
-  if (!activity) return <div>CARGANDO</div>;
-  //TODO
+  if (!activity)
+    return (
+      <div className="activity-loader">
+        <h2>CARGANDO</h2>
+      </div>
+    );
   return (
     <div className="activity-panel">
       <Icon
         icon={activity?.icon || ""}
         style={{
           position: "absolute",
-          top: "40%",
-          left: "20%",
+          top: "35%",
+          left: "11%",
           opacity: "0.1",
           fontSize: 200,
-          textAlign: "center", //TODO centrar icon
           zIndex: -1,
         }}
       />

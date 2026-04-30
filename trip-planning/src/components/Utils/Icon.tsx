@@ -11,7 +11,7 @@ export default function Icon({
 }) {
   return (
     <i
-      className={`fa-solid ${icon}`}
+      className={`fa-solid fa-fw ${icon}`}
       style={{ color: color ? `var(${color})` : "", ...style }}
       onClick={onClick}
     />

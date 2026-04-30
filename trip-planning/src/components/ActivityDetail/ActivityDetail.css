@@ -10,6 +10,10 @@
   z-index: 1;
   font-variant-numeric: tabular-nums;
 
+  activity-loader {
+    height: 100%;
+  }
+
   .activity-detail {
     height: 100%;
     display: grid;
@@ -43,7 +47,6 @@
   }
 
   .activity-header {
-    /* TODO */
     text-transform: uppercase;
     display: grid;
     grid-template-columns: 90% 10%;
