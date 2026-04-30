@@ -7,6 +7,7 @@ import {
   getDoc,
   getDocs,
   getFirestore,
+  setDoc,
   updateDoc,
 } from "firebase/firestore";
 import type { Activity, Day, Trip } from "./types";
@@ -135,6 +136,7 @@ export const updateActivityInfo = async (
   activityId: string,
   dayId: string,
   activityInfo: Activity,
+  nActivities?: number,
   tripId: string = HONEYMOON_ID,
 ) => {
   //Query para info
@@ -145,14 +147,17 @@ export const updateActivityInfo = async (
     dayId,
     ACTIVITIES_COLLECTION,
   ];
-  const daySnap = doc(db, linkArray.join("/"), activityId);
+
+  const actId =
+    activityId === "new" ? generateActivityId(dayId, nActivities) : activityId;
+  const daySnap = doc(db, linkArray.join("/"), actId);
   const actDict: Record<string, unknown> = {};
 
   for (const key of Object.keys(activityInfo) as (keyof Activity)[]) {
     actDict[key] = activityInfo[key];
   }
 
-  await updateDoc(daySnap, actDict);
+  await setDoc(daySnap, actDict);
 };
 
 export const deleteActivity = async (
@@ -212,4 +217,9 @@ export const checkTask = async (
   tasks[index] = { ...tasks[index], done };
 
   await updateDoc(actRef, { tasks });
+};
+
+const generateActivityId = (dayId: string, nActivities: number = 0) => {
+  let dayN = dayId.split("-")[1];
+  return `act-${dayN}-${nActivities + 1}`;
 };

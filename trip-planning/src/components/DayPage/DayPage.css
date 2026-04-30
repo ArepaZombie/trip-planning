@@ -19,13 +19,12 @@
     position: relative;
     display: grid;
 
-    &::before {
-      content: "";
+    .new-activity-button {
       display: block;
-      width: 15px;
-      height: 15px;
+      width: 20px;
+      height: 20px;
       background: radial-gradient(#aff8f7, var(--blue-light));
-      box-shadow: 0px 0px 3px 3px #aff8f7;
+      box-shadow: 0px 0px 3px 2px #aff8f7;
       border: solid var(--blue-darker);
       position: relative;
       border-radius: 100%;

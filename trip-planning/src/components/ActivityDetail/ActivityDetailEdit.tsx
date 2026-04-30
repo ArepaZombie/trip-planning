@@ -11,6 +11,7 @@ export default function ActivityDetailEdit({
   setOnEdit,
   setActivity,
   setSelectedActivityId,
+  nActivities,
 }: {
   activity: Activity;
   dayId: string;
@@ -18,6 +19,7 @@ export default function ActivityDetailEdit({
   setOnEdit: any;
   setActivity: any;
   setSelectedActivityId: any;
+  nActivities: number;
 }) {
   const handleGoToView = () => {
     setOnEdit(false);
@@ -52,7 +54,7 @@ export default function ActivityDetailEdit({
 
   const handleUpdateActivity = async () => {
     if (window.confirm("¿Guardar cambios?")) {
-      await updateActivityInfo(activityId, dayId, activity);
+      await updateActivityInfo(activityId, dayId, activity, nActivities);
     }
     handleGoToView();
   };

@@ -56,6 +56,17 @@ export default function DayPage() {
     await checkItem(dayId || "", index, checked);
   };
 
+  const generateNewActivityId = () => {
+    if (selectedActivityId) return "";
+
+    if (day) {
+      let dayN = day.id.split("-")[1];
+      return `act-${dayN}-${day.activities.length + 1}`;
+    }
+
+    return "";
+  };
+
   return (
     <>
       {day && (
@@ -65,6 +76,10 @@ export default function DayPage() {
             <h1>{day.title}</h1>
           </div>
           <div className="screen-container">
+            <div
+              className="new-activity-button"
+              onClick={() => setSelectedActivityId(generateNewActivityId())}
+            ></div>
             <div
               className="timer-panel"
               style={{
@@ -82,9 +97,10 @@ export default function DayPage() {
               />
             ) : (
               <ActivityDetail
-                activityId={selectedActivityId}
                 dayId={day.id}
+                activityId={selectedActivityId}
                 setSelectedActivityId={setSelectedActivityId}
+                nActivities={day.activities.length}
               />
             )}
           </div>

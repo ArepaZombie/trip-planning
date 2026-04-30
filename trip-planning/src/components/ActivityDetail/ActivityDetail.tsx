@@ -10,10 +10,12 @@ export default function ActivityDetail({
   activityId,
   dayId,
   setSelectedActivityId,
+  nActivities,
 }: {
   activityId: string;
   dayId: string;
   setSelectedActivityId: any;
+  nActivities: number;
 }) {
   const [activity, setActivity] = useState<Activity>();
   const [onEdit, setOnEdit] = useState<Boolean>(false);
@@ -27,6 +29,19 @@ export default function ActivityDetail({
             return { ...t, id: i };
           });
           setActivity(result);
+        } else {
+          setActivity({
+            id: activityId,
+            title: "",
+            description: "",
+            startTime: "",
+            endTime: "",
+            destiny: "",
+            icon: "",
+            photos: [],
+            tasks: [],
+          } as Activity);
+          setOnEdit(true);
         }
       }
     };
@@ -66,6 +81,7 @@ export default function ActivityDetail({
           activityId={activityId}
           setActivity={setActivity}
           setSelectedActivityId={setSelectedActivityId}
+          nActivities={nActivities}
         />
       )}
     </div>
