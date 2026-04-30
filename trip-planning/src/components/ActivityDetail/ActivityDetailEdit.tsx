@@ -2,8 +2,7 @@ import { useState, type ChangeEvent } from "react";
 import type { Activity, Task } from "../../types";
 import Icon from "../Utils/Icon";
 import TaskItemList from "./TaskItemList";
-import { setNestedValue } from "../../utils";
-import { updateActivityInfo } from "../../firebase_firestore";
+import { deleteActivity, updateActivityInfo } from "../../firebase_firestore";
 
 export default function ActivityDetailEdit({
   activity,
@@ -11,12 +10,14 @@ export default function ActivityDetailEdit({
   activityId,
   setOnEdit,
   setActivity,
+  setSelectedActivityId,
 }: {
   activity: Activity;
   dayId: string;
   activityId: string;
   setOnEdit: any;
   setActivity: any;
+  setSelectedActivityId: any;
 }) {
   const handleGoToView = () => {
     setOnEdit(false);
@@ -49,11 +50,18 @@ export default function ActivityDetailEdit({
     setActivity((prev: any) => ({ ...prev, tasks: new_tasks }));
   };
 
-  const updateActivity = async () => {
-    if (window.confirm("¿Deseas guardar cambios?")) {
+  const handleUpdateActivity = async () => {
+    if (window.confirm("¿Guardar cambios?")) {
       await updateActivityInfo(activityId, dayId, activity);
     }
     handleGoToView();
+  };
+
+  const handleDeleteActivity = async () => {
+    if (window.confirm("¿Borrar actividad?")) {
+      await deleteActivity(activityId, dayId);
+    }
+    setSelectedActivityId("");
   };
 
   const iconOptions = [
@@ -163,10 +171,10 @@ export default function ActivityDetailEdit({
       </div>
       <div className="activity-options">
         <div>
-          <a onClick={updateActivity}>BORRAR</a>
+          <a onClick={handleDeleteActivity}>BORRAR</a>
         </div>
         <div className="save-activity-button">
-          <a onClick={updateActivity}>GUARDAR</a>
+          <a onClick={handleUpdateActivity}>GUARDAR</a>
         </div>
       </div>
     </div>

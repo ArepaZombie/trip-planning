@@ -65,6 +65,7 @@ export default function ActivityDetail({
           setOnEdit={setOnEdit}
           activityId={activityId}
           setActivity={setActivity}
+          setSelectedActivityId={setSelectedActivityId}
         />
       )}
     </div>

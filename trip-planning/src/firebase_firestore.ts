@@ -2,6 +2,7 @@ import "firebase/firestore";
 import firebase from "firebase/compat/app";
 import {
   collection,
+  deleteDoc,
   doc,
   getDoc,
   getDocs,
@@ -152,6 +153,24 @@ export const updateActivityInfo = async (
   }
 
   await updateDoc(daySnap, actDict);
+};
+
+export const deleteActivity = async (
+  activityId: string,
+  dayId: string,
+  tripId: string = HONEYMOON_ID,
+) => {
+  //Query para info
+  let linkArray = [
+    TRIP_COLLECTION,
+    tripId,
+    DAYS_COLLECTION,
+    dayId,
+    ACTIVITIES_COLLECTION,
+  ];
+  const daySnap = doc(db, linkArray.join("/"), activityId);
+
+  await deleteDoc(daySnap);
 };
 
 export const checkItem = async (
