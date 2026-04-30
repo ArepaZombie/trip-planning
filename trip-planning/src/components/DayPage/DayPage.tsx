@@ -50,7 +50,7 @@ export default function DayPage() {
     };
 
     getData();
-  }, []);
+  }, [selectedActivityId]);
 
   const checkItemHandler = async (index: number, checked: boolean) => {
     await checkItem(dayId || "", index, checked);

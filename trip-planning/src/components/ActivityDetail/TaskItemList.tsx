@@ -15,7 +15,7 @@ export default function TaskItemList({
 }) {
   const [editIndex, setEditIndex] = useState<number | false>(false);
 
-  if (!tasks || tasks.length < 0) return <p>No hay tareas ingresadas</p>;
+  if (!tasks || tasks.length < 1) return <p>No hay tareas ingresadas</p>;
 
   return (
     <>

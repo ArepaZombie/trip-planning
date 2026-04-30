@@ -35,7 +35,9 @@ export default function EditDayPage() {
 
   const handleUpdate = async () => {
     try {
-      await updateDayInfo(dayId || "", day);
+      if (window.confirm("¿Guardar cambios?") && dayId) {
+        await updateDayInfo(dayId, day);
+      }
       navigate(`/day/${dayId}`);
     } catch {
       console.error("Error");

@@ -1,15 +1,10 @@
-import { useEffect, useState, type ChangeEvent } from "react";
+import { useEffect, useState } from "react";
 import type { Activity } from "../../types";
 import Icon from "../Utils/Icon";
-import {
-  checkTask,
-  getActivityInfo,
-  updateBudget,
-} from "../../firebase_firestore";
+import { getActivityInfo } from "../../firebase_firestore";
 import "./ActivityDetail.css";
 import ActivityDetailView from "./ActivityDetailView";
 import ActivityDetailEdit from "./ActivityDetailEdit";
-import { setNestedValue } from "../../utils";
 
 export default function ActivityDetail({
   activityId,
@@ -39,11 +34,6 @@ export default function ActivityDetail({
     getData();
   }, [activityId]);
 
-  useEffect(() => {
-    //BORRAR TODO
-    console.log(activity?.startTime);
-  }, [activity]);
-
   if (!activity) return <div>CARGANDO</div>;
   //TODO
   return (
@@ -56,6 +46,7 @@ export default function ActivityDetail({
           left: "20%",
           opacity: "0.1",
           fontSize: 200,
+          textAlign: "center", //TODO centrar icon
           zIndex: -1,
         }}
       />

@@ -15,6 +15,12 @@
     grid-row: span 2;
     grid-column: 1;
     border-right: solid;
+    align-items: center;
+    display: flex;
+
+    p {
+      font-variant-numeric: tabular-nums;
+    }
   }
 
   .activity-cell {
@@ -22,8 +28,9 @@
     display: grid;
     grid-template-columns: 10% 90%;
     p {
-      padding: 10px;
+      /* padding: 10px; */
       text-transform: uppercase;
+      margin: 0;
     }
   }
 

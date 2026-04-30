@@ -130,6 +130,30 @@ export const getActivityInfo = async (
   return daySnap.data() as Activity;
 };
 
+export const updateActivityInfo = async (
+  activityId: string,
+  dayId: string,
+  activityInfo: Activity,
+  tripId: string = HONEYMOON_ID,
+) => {
+  //Query para info
+  let linkArray = [
+    TRIP_COLLECTION,
+    tripId,
+    DAYS_COLLECTION,
+    dayId,
+    ACTIVITIES_COLLECTION,
+  ];
+  const daySnap = doc(db, linkArray.join("/"), activityId);
+  const actDict: Record<string, unknown> = {};
+
+  for (const key of Object.keys(activityInfo) as (keyof Activity)[]) {
+    actDict[key] = activityInfo[key];
+  }
+
+  await updateDoc(daySnap, actDict);
+};
+
 export const checkItem = async (
   dayId: string,
   index: number,

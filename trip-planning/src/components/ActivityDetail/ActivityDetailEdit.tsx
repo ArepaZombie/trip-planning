@@ -3,6 +3,7 @@ import type { Activity, Task } from "../../types";
 import Icon from "../Utils/Icon";
 import TaskItemList from "./TaskItemList";
 import { setNestedValue } from "../../utils";
+import { updateActivityInfo } from "../../firebase_firestore";
 
 export default function ActivityDetailEdit({
   activity,
@@ -46,6 +47,13 @@ export default function ActivityDetailEdit({
     });
 
     setActivity((prev: any) => ({ ...prev, tasks: new_tasks }));
+  };
+
+  const updateActivity = async () => {
+    if (window.confirm("¿Deseas guardar cambios?")) {
+      await updateActivityInfo(activityId, dayId, activity);
+    }
+    handleGoToView();
   };
 
   const iconOptions = [
@@ -110,10 +118,18 @@ export default function ActivityDetailEdit({
           rel="stylesheet"
         />
 
-        <select name="icon" id="icon" onChange={handleChange}>
+        <select
+          name="icon"
+          id="icon"
+          onChange={handleChange}
+          defaultValue={activity.icon}
+        >
           {iconOptions.map((i) => {
             return (
-              <option value={i.name} selected={i.name === activity.icon}>
+              <option
+                value={i.name}
+                //selected={i.name === activity.icon}
+              >
                 {i.description}
               </option>
             );
@@ -147,10 +163,10 @@ export default function ActivityDetailEdit({
       </div>
       <div className="activity-options">
         <div>
-          <a href="">BORRAR</a>
+          <a onClick={updateActivity}>BORRAR</a>
         </div>
         <div className="save-activity-button">
-          <a href="">GUARDAR</a>
+          <a onClick={updateActivity}>GUARDAR</a>
         </div>
       </div>
     </div>
