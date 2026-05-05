@@ -8,6 +8,8 @@ import {
   getDoc,
   getDocs,
   getFirestore,
+  orderBy,
+  query,
   setDoc,
   updateDoc,
 } from "firebase/firestore";
@@ -55,8 +57,8 @@ export const getDaysByTrip = async (tripId: string = HONEYMOON_ID) => {
     db,
     `${TRIP_COLLECTION}/${tripId}/${DAYS_COLLECTION}`,
   );
-  const query = await getDocs(daysRef);
-  let days = query.docs.map((d) => ({ id: d.id, ...d.data() })) as Day[];
+  const q = await getDocs(query(daysRef, orderBy("date")));
+  let days = q.docs.map((d) => ({ id: d.id, ...d.data() })) as Day[];
   return days;
 };
 
@@ -138,7 +140,6 @@ export const updateActivityInfo = async (
   activityId: string,
   dayId: string,
   activityInfo: Activity,
-  nActivities?: number,
   tripId: string = HONEYMOON_ID,
 ) => {
   //Query para info
@@ -226,4 +227,29 @@ export const logInFirebase = async (email: string, password: string) => {
 
 export const logOutFirebase = async () => {
   await signOut(auth);
+};
+
+export const getDayNavbarIds = async (
+  dayId?: string,
+  tripId: string = HONEYMOON_ID,
+) => {
+  if (!dayId) return { dayIndex: "", nextId: "", previousId: "" };
+
+  const daysRef = collection(
+    db,
+    `${TRIP_COLLECTION}/${tripId}/${DAYS_COLLECTION}`,
+  );
+  const q = await getDocs(query(daysRef, orderBy("date")));
+  const days = q.docs.map((doc) => ({
+    id: doc.id,
+    ...doc.data(),
+  })) as Day[];
+
+  const index = days.findIndex((day) => day.id === dayId);
+
+  return {
+    dayIndex: index,
+    previousId: index > 0 ? days[index - 1].id : "",
+    nextId: index < days.length - 1 ? days[index + 1].id : "",
+  };
 };

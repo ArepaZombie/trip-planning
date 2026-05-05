@@ -1,5 +1,9 @@
 import { useEffect, useState } from "react";
-import { checkItem, getDayInfo } from "../../firebase_firestore";
+import {
+  checkItem,
+  getDayInfo,
+  getDayNavbarIds,
+} from "../../firebase_firestore";
 import type { Day } from "../../types";
 import { useParams } from "react-router-dom";
 import SchedulePanel from "../SchedulePanel/SchedulePanel";
@@ -12,13 +16,13 @@ import NavBar from "../NavBar/NavBar";
 export default function DayPage() {
   const [day, setDay] = useState<Day>();
   const [time, setTime] = useState<number>();
+  const [navBarInfo, setNavBarInfo] = useState<any>({
+    dayIndex: "",
+    nextUrl: "",
+    previousUrl: "",
+  });
   const [selectedActivityId, setSelectedActivityId] = useState<string>("");
-
   const { dayId } = useParams();
-
-  const numberDay = Number(dayId?.split("-").at(-1));
-  const previousLink = numberDay > 1 && `/day/day-${numberDay - 1}`;
-  const nextLink = numberDay < 6 && `/day/day-${numberDay + 1}`;
 
   const calculateTime = () => {
     const now = new Date();
@@ -33,14 +37,7 @@ export default function DayPage() {
     return Math.round((msPasados / msTotales) * 100);
   };
 
-  useEffect(() => {
-    const intervalo = setInterval(() => {
-      setTime(calculateTime());
-    }, 1000);
-
-    return () => clearInterval(intervalo);
-  });
-
+  //Fetch data del día
   useEffect(() => {
     const getData = async () => {
       if (dayId) {
@@ -51,6 +48,29 @@ export default function DayPage() {
 
     getData();
   }, [selectedActivityId]);
+
+  //Contador
+  useEffect(() => {
+    const intervalo = setInterval(() => {
+      setTime(calculateTime());
+    }, 1000);
+
+    return () => clearInterval(intervalo);
+  });
+
+  //get Navbar info
+  useEffect(() => {
+    const getNavbarInfo = async () => {
+      const info = await getDayNavbarIds(dayId);
+      setNavBarInfo({
+        dayIndex: info.dayIndex,
+        nextUrl: info.nextId ? `/day/${info.nextId}` : "",
+        previousUrl: info.previousId ? `/day/${info.previousId}` : "",
+      });
+    };
+
+    getNavbarInfo();
+  }, []);
 
   const checkItemHandler = async (index: number, checked: boolean) => {
     await checkItem(dayId || "", index, checked);
@@ -72,7 +92,7 @@ export default function DayPage() {
       {day && (
         <div className="day-page">
           <div className="day-page-header">
-            <h2>Día {day.n}</h2>
+            <h2>Día {navBarInfo.dayIndex + 1}</h2>
             <h1>{day.title}</h1>
           </div>
           <div className="screen-container">
@@ -111,7 +131,11 @@ export default function DayPage() {
           <BudgetWidget budget={day.budget} />
         </div>
       )}
-      <NavBar previous={previousLink} menu="/" next={nextLink} />
+      <NavBar
+        previous={navBarInfo.previousUrl}
+        menu="/"
+        next={navBarInfo.nextUrl}
+      />
     </>
   );
 }

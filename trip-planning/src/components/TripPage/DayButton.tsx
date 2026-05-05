@@ -1,7 +1,7 @@
 import type { Day } from "../../types";
 import Icon from "../Utils/Icon";
 
-export default function DayButton({ day }: { day: Day }) {
+export default function DayButton({ day, index }: { day: Day; index: number }) {
   const getState = () => {
     const date = new Date(day.date).setHours(0, 0, 0, 0);
     const now = new Date().setHours(0, 0, 0, 0);
@@ -15,7 +15,7 @@ export default function DayButton({ day }: { day: Day }) {
 
   return (
     <div className={`day-button ${getState()}`}>
-      <p className="n-day">{day.n}</p>
+      <p className="n-day">{index + 1}</p>
       <a className="title-day" href={`/day/${day.id}`}>
         {day.title}
       </a>
