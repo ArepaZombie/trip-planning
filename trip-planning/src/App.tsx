@@ -32,7 +32,7 @@ function App() {
   if (loading) return <div>Cargando...</div>;
 
   return (
-    <BrowserRouter>
+    <BrowserRouter basename="/trip-planning/">
       <Routes>
         <Route
           path="/login"
