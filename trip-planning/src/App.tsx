@@ -26,7 +26,7 @@ function App() {
   if (loading) return <div>Cargando...</div>;
 
   return (
-    <HashRouter>
+    <HashRouter basename={import.meta.env.BASE_URL}>
       <Routes>
         <Route
           path="/login"
