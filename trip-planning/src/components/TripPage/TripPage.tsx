@@ -1,5 +1,9 @@
 import { useEffect, useState } from "react";
-import { getDaysByTrip, getTripInfo } from "../../firebase_firestore";
+import {
+  getDaysByTrip,
+  getTripInfo,
+  // logOutFirebase,
+} from "../../firebase_firestore";
 import type { Day, Trip } from "../../types";
 import DayList from "./DayList";
 import "./TripPage.css";

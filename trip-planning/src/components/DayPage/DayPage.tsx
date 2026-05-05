@@ -64,8 +64,8 @@ export default function DayPage() {
       const info = await getDayNavbarIds(dayId);
       setNavBarInfo({
         dayIndex: info.dayIndex,
-        nextUrl: info.nextId ? `/day/${info.nextId}` : "",
-        previousUrl: info.previousId ? `/day/${info.previousId}` : "",
+        nextUrl: info.nextId ? `/#/day/${info.nextId}` : "",
+        previousUrl: info.previousId ? `/#/day/${info.previousId}` : "",
       });
     };
 

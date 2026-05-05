@@ -16,10 +16,10 @@ export default function DayButton({ day, index }: { day: Day; index: number }) {
   return (
     <div className={`day-button ${getState()}`}>
       <p className="n-day">{index + 1}</p>
-      <a className="title-day" href={`/day/${day.id}`}>
+      <a className="title-day" href={`/#/day/${day.id}`}>
         {day.title}
       </a>
-      <a className="config-day" href={`/day/${day.id}/edit`}>
+      <a className="config-day" href={`/#/day/${day.id}/edit`}>
         <Icon icon="fa-cog" />
       </a>
     </div>

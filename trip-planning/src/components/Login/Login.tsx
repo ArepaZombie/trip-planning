@@ -40,7 +40,7 @@ export const Login = ({ setUser }: { setUser: any }) => {
       <img
         className="login-button"
         onClick={handlerLogIn}
-        src="/img/seal.png"
+        src="/trip-planning/img/seal.png"
         alt=""
       />
     </div>

@@ -1,10 +1,4 @@
-import {
-  BrowserRouter,
-  Routes,
-  Route,
-  Navigate,
-  Outlet,
-} from "react-router-dom";
+import { Routes, Route, Navigate, Outlet, HashRouter } from "react-router-dom";
 import DayPage from "./components/DayPage/DayPage";
 import TripPage from "./components/TripPage/TripPage";
 import EditDayPage from "./components/EditDay/EditDay";
@@ -32,7 +26,7 @@ function App() {
   if (loading) return <div>Cargando...</div>;
 
   return (
-    <BrowserRouter basename="/trip-planning/">
+    <HashRouter>
       <Routes>
         <Route
           path="/login"
@@ -50,7 +44,7 @@ function App() {
           <Route path="/day/:dayId/edit" element={<EditDayPage />} />
         </Route>
       </Routes>
-    </BrowserRouter>
+    </HashRouter>
   );
 }
 export default App;
