@@ -24,9 +24,9 @@ export default function TripPage() {
     getData();
   }, []);
 
-  const handleLogOut = async () => {
-    await logOutFirebase();
-  };
+  // const handleLogOut = async () => {
+  //   await logOutFirebase();
+  // };
 
   return (
     <div className="trip-page">

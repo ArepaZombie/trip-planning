@@ -33,7 +33,7 @@ const TRIP_COLLECTION = "trips";
 const DAYS_COLLECTION = "days";
 const ACTIVITIES_COLLECTION = "activities";
 const HONEYMOON_ID = "honeymoon";
-const PACKING_ITEMS = "packingItems";
+// const PACKING_ITEMS = "packingItems";
 
 export const getTrips = async () => {
   const query = await getDocs(collection(db, TRIP_COLLECTION));

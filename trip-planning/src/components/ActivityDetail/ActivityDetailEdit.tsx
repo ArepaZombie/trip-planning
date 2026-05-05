@@ -1,5 +1,5 @@
 import { useState, type ChangeEvent } from "react";
-import type { Activity, Task } from "../../types";
+import type { Activity } from "../../types";
 import Icon from "../Utils/Icon";
 import TaskItemList from "./TaskItemList";
 import { deleteActivity, updateActivityInfo } from "../../firebase_firestore";
@@ -11,7 +11,6 @@ export default function ActivityDetailEdit({
   setOnEdit,
   setActivity,
   setSelectedActivityId,
-  nActivities,
 }: {
   activity: Activity;
   dayId: string;
@@ -19,7 +18,6 @@ export default function ActivityDetailEdit({
   setOnEdit: any;
   setActivity: any;
   setSelectedActivityId: any;
-  nActivities: number;
 }) {
   const handleGoToView = () => {
     setOnEdit(false);
@@ -54,7 +52,7 @@ export default function ActivityDetailEdit({
 
   const handleUpdateActivity = async () => {
     if (window.confirm("¿Guardar cambios?")) {
-      await updateActivityInfo(activityId, dayId, activity, nActivities);
+      await updateActivityInfo(activityId, dayId, activity);
     }
     handleGoToView();
   };

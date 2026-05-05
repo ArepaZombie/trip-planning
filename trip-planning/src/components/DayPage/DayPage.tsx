@@ -120,7 +120,6 @@ export default function DayPage() {
                 dayId={day.id}
                 activityId={selectedActivityId}
                 setSelectedActivityId={setSelectedActivityId}
-                nActivities={day.activities.length}
               />
             )}
           </div>

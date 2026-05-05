@@ -1,4 +1,4 @@
-import { redirect, useNavigate, useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import "./EditDay.css";
 import { useEffect, useState, type ChangeEvent } from "react";
 import { getDayInfo, updateDayInfo } from "../../firebase_firestore";
